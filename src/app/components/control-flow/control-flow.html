@@ -1,0 +1,77 @@
+<table>
+    <tr>
+        <td>
+            @if (isMessageVisiable) {
+            <p>This is a test message</p>
+            }
+        </td>
+
+        <td>
+            <button (click)="messageVisibility()">{{buttonMessage}}</button>
+        </td>
+    </tr>
+    <br>
+    <tr>
+        <td>
+            @if (startMonthName =='jan') {
+            <span>January</span>
+            }@else if (startMonthName == 'feb') {
+            <span>February</span>
+            }@else if (startMonthName == 'mar') {
+            <span>March</span>
+            } @else {
+            <span>Wrong Input</span>
+            }
+        </td>
+        <td>
+            <input type="text" [(ngModel)]="startMonthName">
+        </td>
+    </tr>
+
+    <br>
+    <tr>
+        <td>
+            <ul>
+                @for (item of cityList; track $index) {
+                <li>{{item}}</li>
+                }
+            </ul>
+        </td>
+
+        <td>
+            <select>
+                @for (item of cityList; track $index) {
+                <option value="">{{item}}</option>
+                }
+            </select>
+        </td>
+    </tr>
+</table>
+
+<br>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of studentList; track $index) {
+        <tr>
+            <td>{{$index+1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.city}}</td>
+            <td>
+                @if(item.isActive){
+                    <span class="active">Active</span>
+                }@else{
+                    <span class="deactive">Deactive</span>
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
