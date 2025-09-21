@@ -94,8 +94,8 @@
         <td>
             <input #nameInput type="text" placeholder="Enter name" />
             <div class="button-group">
-                <button (click)="input = nameInput.value">Set Text</button>
-                <button [hidden]="!input" (click)="clear()">Clear</button>
+                <button class="button bg-gray-300 p-1 rounded rounded-3 mt-1" (click)="input = nameInput.value">Set Text</button>
+                <button class="button bg-gray-300 p-1 rounded rounded-3 mt-1" [hidden]="!input" (click)="clear()">Clear</button>
             </div>
         </td>
     </tr>
