@@ -54,8 +54,8 @@ export class AttDirective implements OnInit,
   ngAfterViewInit(): void {
     console.log('ngAfterViewInit')
     //subscribe
-
   }
+
   ngAfterViewChecked(): void {
     console.log('ngAfterViewChecked')
   }
