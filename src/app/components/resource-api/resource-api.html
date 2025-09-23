@@ -1,0 +1,31 @@
+<div class="mt-2 p-2 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
+
+    <div class="row">
+        {{userData.hasValue()}}
+        <br>
+        {{userData.value()}}
+        <br>
+        {{userData.isLoading()}}
+    </div>
+
+    <div class="row">
+        @if (userData.hasValue()) {
+        <ul>
+            @for (item of userData.value(); track $index) {
+            <li>{{item.username}}</li>
+            }
+        </ul>
+        }
+    </div>
+
+    <div class="row">
+        @if (userList.hasValue()) {
+        <ul>
+            @for (item of userList.value(); track $index) {
+            <li>{{item.username}}</li>
+            }
+        </ul>
+        }
+    </div>
+
+</div>
