@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from "@angular/forms";
+import { Master } from '../../services/master';
 
 @Component({
   selector: 'app-user',
@@ -12,6 +13,8 @@ export class User implements OnInit {
 
   http = inject(HttpClient);
   userList: any[] = [];
+
+  masterService = inject(Master);
 
   userObject: any = {
     "userId": 0,
@@ -26,8 +29,9 @@ export class User implements OnInit {
   }
 
   getUsers() {
-    this.http.get('https://api.freeprojectapi.com/api/GoalTracker/getAllUsers')
+    this.masterService.getUsers()
       .subscribe((data: any) => {
+        debugger
         this.userList = data;
       });
   }
