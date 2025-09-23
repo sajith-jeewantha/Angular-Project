@@ -42,8 +42,55 @@ export class User implements OnInit {
         },
         error: (error) => {
           debugger
-          alert('Error Occurred - '+error.error) },
+          alert('Error Occurred - ' + error.error)
+        },
       })
   }
 
+  reset() {
+    this.userObject = {
+      "userId": 0,
+      "emailId": "",
+      "password": "",
+      "fullName": "",
+      "mobileNo": ""
+    }
+  }
+
+  onEdit(item: any) {
+    this.userObject = item;
+  }
+
+  onUserUpdate() {
+    this.userObject.createdDate = new Date();
+    this.http.put("https://api.freeprojectapi.com/api/GoalTracker/updateUser?id=" + this.userObject.userId, this.userObject)
+      .subscribe({
+        next: (result) => {
+          debugger
+          alert('User Update Successfully');
+          this.getUsers();
+        },
+        error: (error) => {
+          debugger
+          alert('Error Occurred - ' + error.error)
+        },
+      })
+  }
+
+  onDelete(item: any) {
+    if (confirm("Are you sure to delete " + item.fullName + " ?")) {
+      this.http.delete("https://api.freeprojectapi.com/api/GoalTracker/deleteUserById?id=" + item.userId)
+        .subscribe({
+          next: (result) => {
+            debugger
+            alert('User Deleted Successfully');
+            this.getUsers();
+          },
+          error: (error) => {
+            debugger
+            alert('Error Occurred - ' + error.error)
+          },
+        })
+    }
+  }
 }

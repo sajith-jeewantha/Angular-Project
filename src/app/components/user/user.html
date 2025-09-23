@@ -13,6 +13,7 @@
                             <th class="border px-4 py-2">Email</th>
                             <th class="border px-4 py-2">Password</th>
                             <th class="border px-4 py-2">mobile</th>
+                            <th class="border px-4 py-2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,6 +24,12 @@
                             <td class="border px-4 py-2">{{ item.emailId }}</td>
                             <td class="border px-4 py-2">{{ item.password }}</td>
                             <td class="border px-4 py-2">{{ item.mobileNo }}</td>
+                            <td class="border px-4 py-2 flex justify-content-center align-items-center">
+                                <button (click)="onEdit(item)" type="button"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-1 rounded focus:outline-none focus:shadow-outline">Edit</button>
+                                <button (click)="onDelete(item)" type="button"
+                                    class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none m-1 focus:shadow-outline">Delete</button>
+                            </td>
                         </tr>
                         }
                     </tbody>
@@ -37,6 +44,14 @@
             </div>
             <div class="card-body mt-6">
                 <div class="row">
+                    <div class="mb-4 hidden">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                            Name
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            type="text" [(ngModel)]="userObject.userId">
+                    </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
                             Name
@@ -73,14 +88,28 @@
                             type="text" [(ngModel)]="userObject.mobileNo">
                     </div>
 
+                    <button (click)="reset()"
+                        class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 m-1 rounded focus:outline-none focus:shadow-outline"
+                        type="button">
+                        Reset
+                    </button>
+
                     <div class="flex items-center">
+                        @if (userObject.userId == 0) {
+
                         <button (click)="onUserSave()"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 m-1 rounded focus:outline-none focus:shadow-outline"
                             type="button">
                             Sign In
                         </button>
+                        }@else {
+                        <button (click)="onUserUpdate()"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-1 rounded focus:outline-none focus:shadow-outline"
+                            type="button">
+                            Update
+                        </button>
+                        }
                     </div>
-
                 </div>
             </div>
         </div>
