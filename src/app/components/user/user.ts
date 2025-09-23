@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
-import { FormsModule, NgModel } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-user',
