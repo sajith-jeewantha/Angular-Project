@@ -28,5 +28,4 @@ export class SignalEx {
     console.log(this.courseName())
   }
 
-  
 }
